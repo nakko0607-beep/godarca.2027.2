@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>対神話殲滅機関アルカナ - GODARCA</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Serif+JP:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ----------------------------------------------------
+           COLOR SYSTEM & BASE
+        ---------------------------------------------------- */
+        :root {
+            --bg-main: #0a0a0c;
+            --bg-card: #121216;
+            --bg-card-dark: #141419;
+            --text-pure: #ffffff;
+            --text-muted: #9fa0a6;
+            --magenta: #e91e63;
+            --magenta-glow: rgba(233, 30, 99, 0.3);
+            --border-color: rgba(233, 30, 99, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-pure);
+            font-family: 'Noto Serif JP', serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(233, 30, 99, 0.08) 0%, transparent 60%),
+                linear-gradient(rgba(233, 30, 99, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(233, 30, 99, 0.01) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ----------------------------------------------------
+           HEADER & NAV
+        ---------------------------------------------------- */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4%;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--magenta);
+            text-shadow: 0 0 10px var(--magenta-glow);
+        }
+
+        nav {
+            display: flex;
+            height: 100%;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--magenta);
+            border-bottom: 3px solid var(--magenta);
+            background: rgba(233, 30, 99, 0.03);
+        }
+
+        /* ----------------------------------------------------
+           MAIN VISUAL
+        ---------------------------------------------------- */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding-top: 15vh; /* 少し下げる調整 */
+        }
+
+        /* アニメーションの追加 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 6rem;
+            letter-spacing: 15px;
+            color: var(--text-pure);
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(233, 30, 99, 0.4);
+            opacity: 0;
+            animation: fadeInUp 2s ease forwards; /* GODARCAの表示 */
+        }
+
+        .catchphrase {
+            font-size: 1.8rem;
+            letter-spacing: 12px;
+            color: var(--magenta);
+            margin-bottom: 40px;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInUp 2s ease forwards;
+            animation-delay: 1.2s; /* サブタイトルの遅延表示 */
+        }
+
+        /* ----------------------------------------------------
+           SECTIONS COMMON
+        ---------------------------------------------------- */
+        section {
+            padding: 100px 4% 60px 4%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--text-pure);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-title span {
+            font-size: 1rem;
+            font-family: 'Oswald', sans-serif;
+            color: var(--magenta);
+            letter-spacing: 3px;
+        }
+
+        /* ----------------------------------------------------
+           INTRODUCTION (世界観・詳細)
+        ---------------------------------------------------- */
+        .intro-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+        }
+
+        .story-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .story-box p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        .story-box p:last-child { margin-bottom: 0; }
+
+        .story-box::before, .detail-box::before {
+            content: ''; position: absolute; top: -1px; left: -1px; width: 15px; height: 15px;
+            border-top: 2px solid var(--magenta); border-left: 2px solid var(--magenta);
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .spec-table th, .spec-table td {
+            padding: 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: left;
+        }
+
+        .spec-table th {
+            color: var(--magenta);
+            font-weight: bold;
+            width: 35%;
+        }
+
+        .intro-details-container {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .detail-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            position: relative;
+        }
+
+        .detail-box h3 {
+            color: var(--magenta);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .detail-box p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #d1d1d6;
+            line-height: 1.8;
+        }
+        .detail-box p:last-child { margin-bottom: 0; }
+
+        /* ----------------------------------------------------
+           ROLES
+        ---------------------------------------------------- */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .role-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+            border-color: var(--magenta);
+            box-shadow: 0 0 15px var(--magenta-glow);
+            transform: translateY(-5px);
+        }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .role-name-ja { font-size: 1.3rem; font-weight: bold; }
+        .role-name-en { font-family: 'Oswald', sans-serif; color: var(--magenta); font-size: 1rem; letter-spacing: 1px; }
+
+        .role-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .arcana-badge {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ----------------------------------------------------
+           HO & PL MEMBER LIST
+        ---------------------------------------------------- */
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 10px 0;
+            flex-grow: 1;
+        }
+        .slider-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-btn {
+            background: transparent;
+            border: 1px solid rgba(233, 30, 99, 0.5);
+            color: var(--magenta);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-family: 'Oswald', sans-serif;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .slider-btn:hover {
+            border-color: var(--magenta);
+            background: rgba(233, 30, 99, 0.1);
+            box-shadow: 0 0 15px var(--magenta-glow);
+        }
+
+        .member-item {
+            flex: 0 0 220px;
+            height: 320px;
+            background: var(--bg-card-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            cursor: pointer; /* ホバー可能を明示 */
+        }
+
+        .member-item:hover {
+            border-color: rgba(233, 30, 99, 0.4);
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.1);
+        }
+
+        .member-ho {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            color: var(--magenta);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-pure);
+            margin-bottom: 20px;
+        }
+
+        .member-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .member-pl {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ----------------------------------------------------
+           HO 詳細ホバーツールチップ
+        ---------------------------------------------------- */
+        .ho-tooltip {
+            position: absolute;
+            width: 600px;
+            background: var(--bg-card-dark);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px var(--magenta-glow);
+            padding: 30px;
+            border-radius: 4px;
+            z-index: 1000;
+            pointer-events: none; /* カーソル干渉防止 */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .ho-tooltip.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .tooltip-header {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--magenta);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .tooltip-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(233, 30, 99, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .tooltip-body {
+            color: #d1d1d6;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            white-space: pre-wrap; /* 改行をそのまま反映 */
+        }
+
+        /* ----------------------------------------------------
+           CHARACTERS 
+        ---------------------------------------------------- */
+        .char-interface {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            min-height: 600px;
+            height: 700px; 
+        }
+
+        .char-selector-list {
+            border-right: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .char-selector-list::-webkit-scrollbar { width: 6px; }
+        .char-selector-list::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+        .char-selector-list::-webkit-scrollbar-thumb { background: rgba(233, 30, 99, 0.3); border-radius: 3px; }
+        .char-selector-list::-webkit-scrollbar-thumb:hover { background: var(--magenta); }
+
+        .char-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 20px;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Noto Serif JP', serif;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .char-btn:hover {
+            background: rgba(233, 30, 99, 0.02);
+            color: var(--text-pure);
+        }
+
+        .char-btn.active {
+            background: linear-gradient(90deg, rgba(233, 30, 99, 0.15), transparent);
+            color: var(--magenta);
+            border-left: 4px solid var(--magenta);
+            font-weight: bold;
+        }
+
+        .char-btn .btn-ho {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .char-display-area {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .char-content {
+            display: none;
+            grid-template-columns: 1.2fr 1fr;
+            height: 100%;
+            animation: charFade 0.6s ease forwards;
+        }
+
+        .char-content.active { display: grid; }
+
+        @keyframes charFade {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .char-img-box {
+            position: relative;
+            height: 100%;
+            background: #000;
+        }
+
+        .char-img-box img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+
+        .char-img-box::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent 70%, var(--bg-card) 100%);
+        }
+
+        .char-detail-info {
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .char-arcana-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            color: var(--magenta);
+            letter-spacing: 2px;
+        }
+
+        .char-main-name {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin: 10px 0;
+            font-family: 'Cinzel', serif;
+        }
+
+        .char-sub-name {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .char-profile-text {
+            font-size: 1rem;
+            color: #d1d1d6;
+            border-left: 2px solid var(--magenta);
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        .char-word {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--text-pure);
+            margin-top: auto;
+            text-shadow: 0 0 5px var(--magenta-glow);
+        }
+
+        /* Coming soon 用のスタイル調整 */
+        #char-coming-soon .char-img-box::after {
+            background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, var(--bg-card) 100%);
+        }
+
+        @media (max-width: 1024px) {
+            .intro-container, .char-interface, .char-content {
+                grid-template-columns: 1fr;
+            }
+            .char-interface { height: auto; display: flex; flex-direction: column; }
+            .char-selector-list { max-height: 250px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .char-img-box { height: 400px; }
+            .char-img-box::after {
+                background: linear-gradient(0deg, transparent 70%, var(--bg-card) 100%);
+            }
+            .hero h1 { font-size: 4rem; }
+            .ho-tooltip { width: 90vw; } /* モバイル時のツールチップ幅調整 */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">GODARCA</div>
+        <nav>
+            <a href="#intro" class="nav-link active">Introduction</a>
+            <a href="#roles" class="nav-link">Roles</a>
+            <a href="#members" class="nav-link">HO & PL</a>
+            <a href="#characters" class="nav-link">Characters</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>GODARCA</h1>
+        <div class="catchphrase">抗え、神話に。</div>
+    </div>
+
+    <section id="intro">
+        <h2 class="section-title">INTRODUCTION <span>世界観・概要</span></h2>
+        <div class="intro-container">
+            <div class="story-box">
+                <p>19世紀末、海底都市ルルイエの浮上により、世界は一度滅びを迎えた。</p>
+                <p>あれから100年。</p>
+                <p>惨劇を生き延び命を繋いだ1％の人類は、未だ折れてはいなかった。</p>
+                <p><strong>対神話殲滅機関アルカナ。</strong></p>
+                <p>旧人類の遺産“原初のアルカナ”を手に、<br>人類最後の都市となったロンドンで今再び、彼らは神話に立ち向かう。</p>
+            </div>
+            <div>
+                <table class="spec-table">
+                    <tr><th>SYSTEM</th><td>Call of Cthulhu <br>(クトゥルフ神話TRPG)</td></tr>
+                    <tr><th>STAGE</th><td>架空世界ロンドン <br>(100年後の終末世界)</td></tr>
+                    <tr><th>PLAYERS</th><td>22人</td></tr>
+                    <tr><th>LOST RATE</th><td>高</td></tr>
+                    <tr><th>SKILL</th><td>指定職業技能</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="intro-details-container">
+            <div class="detail-box">
+                <h3>WORLD 城塞国家ロンドンについて</h3>
+                <p>19世紀末に世界が崩壊し、現在は20世紀末である。世界崩壊後、上層部が【対神話殲滅機関アルカナ】を設立。機関の設立からは約100年。探索者たちは世界崩壊の際に生き残った1%の人類の子孫であり、世界の崩壊を経験しているわけではない。</p>
+                <p>人々は迫りくるルルイエの脅威から人類を守るべく築かれた城塞の中で暮らしており、城塞外に出る自由はない。【原初のアルカナ】は任務で時折外に出ることもあるが、行動の自由は同様にないものと思って構わない。この時代の平均寿命は50〜60歳程度である。</p>
+                <p>100年前のルルイエ崩壊に際し、上層部は「方舟」と呼ばれるもので人類をグレートブリテン島へ収容、保護した。多くは海を渡らなければならなかったことから、避難中に死亡した者も多かったそうだ。東洋や太平洋近辺の島国、西海岸の人々はルルイエ被害の中心地に近かったことから、極端に人口が少ない。ゼロではないため、探索者作成に制限が生まれることはない。</p>
+                <p>現在の人口は2000万人程度。100年の時間をかけて徐々に復興してきた。現在はグレートブリテン島が「城塞国家ロンドン」として存在している。城塞内は大きく分けて5つ、細かく分けて27の区画に分かれている。各区画には本支部、アルカナ支部が設置されており、これらがいわゆる役所の役割を担っている。</p>
+            </div>
+
+            <div class="detail-box">
+                <h3>ARCANA 神話殲滅機関アルカナについて</h3>
+                <p>正式名称は【対神話殲滅機関アルカナ】。戦闘員、非戦闘員合わせて1万人規模の大部隊。機関のトップは〝総統閣下〟及び機関室長フレデリック・オーガスト・キング。彼らと上層部によって機関は運営されており、探索者たちは【原初のアルカナ】という特殊機関員である。各区域の守護を行う【原初のアルカナ】をはじめとした戦闘部隊の他、各地で活動する15の所属と機関隊員がいる。</p>
+                <p><strong>| 特殊機関員【原初のアルカナ】について</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="roles">
+        <h2 class="section-title">TACTICAL ROLES <span>役割概要</span></h2>
+        <div class="roles-grid">
+            <div class="role-card">
+                <div class="role-header">
+                    <span class="role-name-ja">火力</span>
+                    <span class="role-name-en">VANGUARD / ATTACKER</span>
+                </div>
+                <div class="role-members">
+                    <span class="arcana-badge">戦車</span><span class="arcana-badge">力</span><span class="arcana-badge">悪魔</span><span class="arcana-badge">愚者</span><span class="arcana-badge">死神</span>
+                </div>
+            </div>
+            <div class="role-card">
+                <div class="role-header"><span class="role-name-ja">防御</span><span class="role-name-en">IRON WALL / DEFENDER</span></div>
+                <div class="role-members"><span class="arcana-badge">節制</span><span class="arcana-badge">塔</span></div>
+            </div>
+            <div class="role-card">
+                <div class="role-header"><span class="role-name-ja">回復</span><span class="role-name-en">HEALER / SANITY CARE</span></div>
+                <div class="role-members"><span class="arcana-badge">月</span><span class="arcana-badge">太陽</span><span class="arcana-badge">審判</span><span class="arcana-badge">死神</span></div>
+            </div>
+            <div class="role-card">
+                <div class="role-header"><span class="role-name-ja">バフ</span><span class="role-name-en">FORTIFIER / BUFF</span></div>
+                <div class="role-members"><span class="arcana-badge">女帝</span><span class="arcana-badge">皇帝</span><span class="arcana-badge">正義</span><span class="arcana-badge">星</span></div>
+            </div>
+            <div class="role-card">
+                <div class="role-header"><span class="role-name-ja">デバフ</span><span class="role-name-en">SABOTEUR / DEBUFF</span></div>
+                <div class="role-members"><span class="arcana-badge">魔術師</span><span class="arcana-badge">女教皇</span><span class="arcana-badge">吊るされた男</span><span class="arcana-badge">星</span></div>
+            </div>
+            <div class="role-card">
+                <div class="role-header"><span class="role-name-ja">特殊</span><span class="role-name-en">STRATEGIST / SPECIAL</span></div>
+                <div class="role-members"><span class="arcana-badge">教皇</span><span class="arcana-badge">恋人</span><span class="arcana-badge">隠者</span><span class="arcana-badge">運命の輪</span></div>
+            </div>
+            <div class="role-card">
+                <div class="role-header"><span class="role-name-ja">ギャンブル</span><span class="role-name-en">RISK TAKER / GAMBLER</span></div>
+                <div class="role-members"><span class="arcana-badge">愚者</span><span class="arcana-badge">運命の輪</span><span class="arcana-badge">死神</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="members">
+        <h2 class="section-title">HANDOUTS & PLAYERS <span>構成員一覧</span></h2>
+        
+        <div class="slider-container">
+            <button class="slider-btn prev" onclick="slideMember('prev')">&lt;</button>
+            <div class="slider-track" id="memberTrack">
+                <div class="member-item" data-ho-id="0"><div class="member-ho">HO 0</div><div class="member-name">愚者</div><div class="member-divider"></div><div class="member-pl">本舗</div></div>
+                <div class="member-item" data-ho-id="1"><div class="member-ho">HO I</div><div class="member-name">魔術師</div><div class="member-divider"></div><div class="member-pl">なこ</div></div>
+                <div class="member-item" data-ho-id="2"><div class="member-ho">HO II</div><div class="member-name">女教皇</div><div class="member-divider"></div><div class="member-pl">なこ</div></div>
+                <div class="member-item" data-ho-id="3"><div class="member-ho">HO III</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">みすみ</div></div>
+                <div class="member-item" data-ho-id="4"><div class="member-ho">HO IV</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">うきこ</div></div>
+                <div class="member-item" data-ho-id="5"><div class="member-ho">HO V</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">とおの</div></div>
+                <div class="member-item" data-ho-id="6"><div class="member-ho">HO VI</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">本舗</div></div>
+                <div class="member-item" data-ho-id="7"><div class="member-ho">HO VII</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">すっぽん</div></div>
+                <div class="member-item" data-ho-id="8"><div class="member-ho">HO VIII</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">あやこ</div></div>
+                <div class="member-item" data-ho-id="9"><div class="member-ho">HO IX</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">よみはる</div></div>
+                <div class="member-item" data-ho-id="10"><div class="member-ho">HO X</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">ぷいじ</div></div>
+                <div class="member-item" data-ho-id="11"><div class="member-ho">HO XI</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">みすみ</div></div>
+                <div class="member-item" data-ho-id="12"><div class="member-ho">HO XII</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">ぷいじ</div></div>
+                <div class="member-item" data-ho-id="13"><div class="member-ho">HO XIII</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">うきこ</div></div>
+                <div class="member-item" data-ho-id="14"><div class="member-ho">HO XIV</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">あやこ</div></div>
+                <div class="member-item" data-ho-id="15"><div class="member-ho">HO XV</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">あんり</div></div>
+                <div class="member-item" data-ho-id="16"><div class="member-ho">HO XVI</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">桜守</div></div>
+                <div class="member-item" data-ho-id="17"><div class="member-ho">HO XVII</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">あんり</div></div>
+                <div class="member-item" data-ho-id="18"><div class="member-ho">HO XVIII</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">桜守</div></div>
+                <div class="member-item" data-ho-id="19"><div class="member-ho">HO XIX</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">よみはる</div></div>
+                <div class="member-item" data-ho-id="20"><div class="member-ho">HO XX</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">とおの</div></div>
+                <div class="member-item" data-ho-id="21"><div class="member-ho">HO XXI</div><div class="member-name">???</div><div class="member-divider"></div><div class="member-pl">すっぽん</div></div>
+            </div>
+            <button class="slider-btn next" onclick="slideMember('next')">&gt;</button>
+        </div>
+    </section>
+
+    <section id="characters">
+        <h2 class="section-title">CHARACTERS <span>キャラクター詳細</span></h2>
+        
+        <div class="char-interface">
+            <div class="char-selector-list">
+                <button class="char-btn" onclick="switchChar('ho0')"><span class="btn-ho">HO 00 ─ THE FOOL</span>???</button>
+                <button class="char-btn active" onclick="switchChar('ho1')"><span class="btn-ho">HO I ─ THE MAGICIAN</span>ザカライア メルディス</button>
+                <button class="char-btn" onclick="switchChar('ho2')"><span class="btn-ho">HO II ─ THE HIGH PRIESTESS</span>ヒルデガルド ヴァレンタイン</button>
+                <button class="char-btn" onclick="switchChar('ho3')"><span class="btn-ho">HO III ─ THE EMPRESS</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho4')"><span class="btn-ho">HO IV ─ THE EMPEROR</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho5')"><span class="btn-ho">HO V ─ THE HIEROPHANT</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho6')"><span class="btn-ho">HO VI ─ THE LOVERS</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho7')"><span class="btn-ho">HO VII ─ THE CHARIOT</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho8')"><span class="btn-ho">HO VIII ─ JUSTICE</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho9')"><span class="btn-ho">HO IX ─ THE HERMIT</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho10')"><span class="btn-ho">HO X ─ WHEEL OF FORTUNE</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho11')"><span class="btn-ho">HO XI ─ STRENGTH</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho12')"><span class="btn-ho">HO XII ─ THE HANGED MAN</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho13')"><span class="btn-ho">HO XIII ─ DEATH</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho14')"><span class="btn-ho">HO XIV ─ TEMPERANCE</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho15')"><span class="btn-ho">HO XV ─ THE DEVIL</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho16')"><span class="btn-ho">HO XVI ─ THE TOWER</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho17')"><span class="btn-ho">HO XVII ─ THE STAR</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho18')"><span class="btn-ho">HO XVIII ─ THE MOON</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho19')"><span class="btn-ho">HO XIX ─ THE SUN</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho20')"><span class="btn-ho">HO XX ─ JUDGEMENT</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho21')"><span class="btn-ho">HO XXI ─ THE WORLD</span>???</button>
+            </div>
+
+            <div class="char-display-area">
+                
+                <div class="char-content active" id="char-ho1">
+                    <div class="char-img-box">
+                        <img src="image1.png" alt="Zachariah Meredith">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO I ─ THE MAGICIAN / <br>デバフサポート</div>
+                        <h3 class="char-main-name">Zachariah Meredith</h3>
+                        <div class="char-sub-name">ザカライア メルディス (PL: なこ)</div>
+                        <div class="char-profile-text">
+                            創造と意志を司る「魔術師」のアルカナ。不敵な笑みと赤黒の衣装が印象的な青年。<br><br>
+                            戦況をコントロールするデバフサポートとしての役割を担い、その飄々とした態度の裏には高い知略と確固たる意志を潜ませている。
+                        </div>
+                        <div class="char-word">「よっ、調子ど？」</div>
+                    </div>
+                </div>
+
+                <div class="char-content" id="char-ho2">
+                    <div class="char-img-box">
+                        <img src="image2.png" alt="Hildegard Valentine">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO II ─ THE HIGH PRIESTESS / <br>デバフサポート</div>
+                        <h3 class="char-main-name">Hildegard Valentine</h3>
+                        <div class="char-sub-name">ヒルデガルド ヴァレンタイン (PL: なこ)</div>
+                        <div class="char-profile-text">
+                            直感と神秘を司る「女教皇」のアルカナ。静謐な空気を纏う、白と黒の衣装に身を包んだ銀髪の人物。<br><br>
+                            魔術師と同じくデバフサポートに位置し、観察力と深い洞察で戦況の裏をかく。
+                        </div>
+                        <div class="char-word">「奪われるなら、与えないまで。」</div>
+                    </div>
+                </div>
+
+                <div class="char-content" id="char-coming-soon">
+                    <div class="char-img-box" style="background: #111;">
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family: 'Cinzel', serif; font-size: 2rem; color: rgba(255,255,255,0.05);">CLASSIFIED</div>
+                    </div>
+                    <div class="char-detail-info">
+                        <h3 class="char-main-name" style="color: var(--magenta);">Coming soon...</h3>
+                        <div class="char-profile-text" style="border-left: none; padding-left: 0;">
+                            詳細情報は現在開示されていません。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="ho-tooltip" class="ho-tooltip">
+        <div class="tooltip-header" id="tooltip-title"></div>
+        <div class="tooltip-divider"></div>
+        <div class="tooltip-body" id="tooltip-desc"></div>
+    </div>
+
+    <script>
+        // キャラクター切り替え処理 (Coming soon機能追加)
+        function switchChar(id) {
+            const contents = document.querySelectorAll('.char-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            let targetContent = document.getElementById('char-' + id);
+            
+            // 該当IDのコンテンツが無ければ、Coming soonの要素を表示
+            if(!targetContent) {
+                targetContent = document.getElementById('char-coming-soon');
+            }
+            if(targetContent) {
+                targetContent.classList.add('active');
+            }
+
+            const buttons = document.querySelectorAll('.char-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const eventTarget = event.currentTarget;
+            eventTarget.classList.add('active');
+        }
+
+        // ナビゲーションのスクロール追従アクティブ処理
+        const sections = document.querySelectorAll('section, .hero');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id') || '';
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current) && current !== '') {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // メンバーリストの横スライダー処理
+        function slideMember(direction) {
+            const track = document.getElementById('memberTrack');
+            const scrollAmount = 240; 
+            if (direction === 'prev') {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // ==========================================
+        // HO詳細ホバーツールチップ処理
+        // ==========================================
+        const hoData = {
+            0: { title: "｜ HO0 ｜ 愚者", desc: "敵全体に［1d5］ダメージを与える。\nこのとき〈幸運〉をロールし、失敗した場合には［1d10］名の味方にも1d5ダメージを与える。" },
+            1: { title: "｜ HOI ｜ 魔術師", desc: "追加で〈図書館〉を成功するまでロールする。成功後、自身のSAN値を［1d5］、MPを［1］減少させ、減少したSAN値のぶんのターン数、指定した敵［1］体の装甲を完全に無効化する。\n〈図書館〉に失敗した場合は、失敗した回数分のSAN値を追加で減少させる。このときのSANの減少値は効果ターン数に影響しない。\nまたここで一度に5以上のSAN値を喪失しても、一時的発狂は起こらない。" },
+            2: { title: "｜ HOII ｜ 女教皇", desc: "［1］ターンの間、指定した敵［1］体に〝再生反転〟状態を付与する。\n\n✦ 再生反転\n\n『再生』効果を反転する。対象は〝再生反転〟状態中、すべての回復が自傷ダメージに変換される。\n効果終了時、【女教皇】は〝再生反転〟による自傷ダメージの値を2等分し、HPとSAN値に分けて減少させる。奇数の場合はSANの減少値を大きくする。" },
+            3: { title: "｜ HOIII ｜ 女帝", desc: "［2d3］をロールし、［2d3］の結果と同じ数だけ［choice］を振る。出目と対応する自身以外のHOの味方のダメージロールと回復ロールに＋［1d3］。対象は重複しない。\n効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。\n\n自陣内に欠損ロールを駆使してもなおHPが［1］以上にならなかった者が居た場合は、アルカナを振りMPを［1d3］減少させ、成功した場合 [1d3] の回復を対象に付与する。" },
+            4: { title: "｜ HOIV ｜ 皇帝", desc: "［1d6］をロールし、［1d6］の結果と同じ数だけ［choice］を振る。出目と対応する自身以外のHOの味方の〈SANチェック〉を除くすべての技能値に+10％。\n対象は重複しない。\n効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。" },
+            5: { title: "｜ HOV ｜ 教皇", desc: "［2d6］をロールし、その結果と同じ数(n)だけ［nd5］をロールする。\n最終的な値を「救済ストック」として保持し、［1］ターンの間、特殊能力〝救済〟を獲得する。\n\n✦ 救済\n\n救済ストックの値を上限として、味方の〈SANチェック〉関連以外の［1d100］ロールの結果を減少させることができる。〝救済〟を使用するたびに、\n減少させた値と同数の救済ストックを消費する（ラウンド間ダイスは含まない）。\n\n〝救済〟によりロール結果が5以下となったとき、決定的成功と同様の扱いをする。また、96～100から95以下の出目になった場合は、致命的失敗を回避可能。\n減少させた値の合計が救済ストックの最大値を超過しない範囲であれば、複数のロールに分割して使用できる。\n自分のダイスに対して〝救済〟を使用することはできない。\n\n例：\n2d6の結果が8だった場合、1d5を8回（8d5）ロールする。\n8d5の結果が40であった場合、そのターンの救済ストック数は40となる。" },
+            6: { title: "｜ HOVI ｜ 恋人", desc: "［1d5］ターンの間、任意の味方［1］名を自らの〝恋人〟に指名できる。\n指名した相手が判定に失敗した場合、また自身が判定に失敗した場合、互いに代理ダイスロールが可能。ただし、〈原初のアルカナ〉は除く。\n\n一度に選べる〝恋人〟は［1］名のみ。追加指定は不可。次に〈原初のアルカナ〉をロールするまで、対象は固定される。\n新たに〝恋人〟を選定し直す場合、現在の〝恋人〟関係は解消される。\n\n〝恋人〟が存在する間、自身の行動順はDEX順ではなく〝恋人〟の直後となる。\n〝恋人〟の代理ダイスロールを行わなかった場合、自身は通常どおり自由行動が可能。逆に、代理ロールを行った場合は、その時点で手番を消費したものと扱う。\n\nこの代理ロールは〈SANチェック〉以外のラウンド間ダイスにも使用可能。" },
+            7: { title: "｜ HOVII ｜ 戦車", desc: "［1d5］体のランダムな敵に［1d10］の装甲貫通ダメージ。命中数によって追加ダメージ値が変動する。\n\n1体：1d10＋5\n2体：1d10＋4\n3体：1d10＋3\n4体：1d10＋2\n5体：1d10＋1" },
+            8: { title: "｜ HOVIII ｜ 正義", desc: "3ターンの間、全員の与ダメージ、回復効果に＋［1］の固定補正を与える。\n重ね掛け不可。\n\n自陣内に欠損ロールを駆使してもなおHPが［1］以上にならなかった者が居た場合は、アルカナを振りMPを［1d3］減少させ、成功した場合 [1] の回復を対象に付与する。" },
+            9: { title: "｜ HOIX ｜ 隠者", desc: "［1d2］をロールし、自身と出目の人数の任意の味方(最高3名)に\n〝隠密〟状態を付与する。\n効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。\n\n✦ 隠密\n\n〝隠密〟状態にある者は、効果時間中、すべてのダメージダイスの対象外となる。" },
+            10: { title: "｜ HOX ｜ 運命の輪", desc: "必ず戦闘ラウンドの最初に使用を宣言し、ラウンド終了時に〈原初のアルカナ〉をロールする。\n［1d20］を振り、出目と同じ数の自身以外の味方の本ラウンドに自身の手番で行ったロールを、【運命の輪】の特殊ラウンド（以下【運命の輪】ラウンド）で改めてDEX順に振り直しをさせる。\n振り直しをする対象はPLが選ぶ（重複不可）。\n\n本ラウンドの結果➡【運命の輪】ラウンドの結果\n成功➡失敗　：対象（振り直しを行った探索者）はSAN値を即座に－［1d3］する。一部〈原初のアルカナ〉は効果を消失する。\n成功➡成功　：振り直したダイスに応じた追加効果を得る。\n失敗➡成功　：本ラウンドでダイスが成功していた場合に得るはずだった効果を得る。\n失敗➡失敗　：対象（振り直しを行った探索者）はSAN値およびMPを即座に－［1d3］する。\n\n※各HOのアルカナの【運命の輪】追加効果一覧はKPから案内がある。" },
+            11: { title: "｜ HOXI ｜ 力", desc: "自身に以下の効果を付与する。\n効果は［5］ターン継続し、重ね掛けも可能。ただし継続ターンは最初の発動時点の［5］ターンに固定される。\nこの効果は遠距離・魔法武器など、本来ダメージボーナスのない武器にも適用される。\n\n①ダメージボーナスを［1d6］追加。\n②〈原初のアルカナ〉ロールの出目が50以下だった場合、継続ターン中の与ダメージに装甲貫通効果を追加。" },
+            12: { title: "｜ HOXII ｜ 吊るされた男", desc: "敵［1］体を〝吊るし〟状態にする。\nこの状態は、使用者が毎ターン〈原初のアルカナ〉を再発動して更新することでのみ維持される。\n\n✦ 吊るし\n\n使用者と吊るされた者は、解除されるまで受けるダメージを等分する。\nまた、〝吊るし〟状態の間は互いに攻撃・回避のいずれも行うことができない。\n回復を受けることは可能だが、回復の値も折半される。\n等分されたダメージのうち割り切れない場合は敵が多く受けるほか、この回復の折半処理には【女教皇】の〝再生反転〟の効果も適用される。" },
+            13: { title: "｜ HOXIII ｜ 死神", desc: "［5d100（または5b100）］を振り、［5］以下の出目ひとつにつき、現在耐久値が［50］以下の敵を［1］体即死させる。\n［96］以上の出目が出た場合は、任意の敵［1］体から［1d3］のPOWを吸収、同じ値の自身のMPを回復する。\n\nこの［5d100（または5b100）］には、【教皇】の〝救済〟によるマイナスが可能。" },
+            14: { title: "｜ HOXIV ｜ 節制", desc: "ラウンドの行動回数に関係なく、任意のタイミングで使用可能。\n味方が即死級のダメージを受けた際に、その本人が【節制】を含む［1d5］名(本人+【節制】+4名=最大6等分)の味方とでダメージを等分することができる。\n被ダメージを等分する味方には必ず【節制】が含まれ、それ以外の味方については任意で指定可能。\n等分指定は〝塔の壁〟に対しても行うことができる。\n【運命の輪】ラウンドまで含め、［1］ラウンドにつき［1］タイミングのみ発動可能。" },
+            15: { title: "｜ HOXV ｜ 悪魔", desc: "［1d10］をロールし、出目と同じだけの敵をランダムに選択する。\n対象に［1d4］の装甲貫通ダメージを、［1d5］ターンの間継続付与。\n継続ダメージの値は毎ターンごとに自分の手番でロールし、継続ダメージを付与したターンにダメージは発生しない。\n\n連続発動について：\n【悪魔】の〈原初のアルカナ〉は複数のターンで連続して発動が可能だが、ターンごとにその時点での敵の残存勢力すべてを対象としてランダム選出を行う。\n〇敵の数が［1d10］の出目より少ない場合、残っている敵全員が対象となる。\n〇すでに対象となっている敵が選ばれた場合、重ね掛けは不可。この場合再抽選は行われず、重複分の対象追加は行われない。" },
+            16: { title: "｜ HOXVI ｜ 塔", desc: "自身と任意の味方［2］名(最大3名)に〝塔の壁〟を建築する。\n効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。\n\n✦ 塔の壁\n\n耐久値［20］の壁。\n装甲貫通を無効化し、超過ダメージを相殺する。\nただし、以下のいずれかの条件を満たした場合、壁は崩壊する。\n\n- 装甲貫通無効化効果の累計が［10］以上となった場合\n- 超過ダメージの相殺が発生した場合\n\n※壁の耐久値は探索者間で連動しない。" },
+            17: { title: "｜ HOXVII ｜ 星", desc: "自身と任意の味方［1d3＋1］名に特殊効果〝煌々〟を付与する。\n効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。\n\n✦ 煌々\n\n付与対象は［1］ラウンドで［2］回まで〈回避〉が行えるようになる。また、攻撃する対象の〈回避〉を無効化する。\n対象の〈回避〉を無効化した際、その攻撃を行った付与対象は自身のSAN値を［1］減少させる。\nまた、〈回避〉を行わない敵に攻撃を行った場合のダメージ値が［1d3］増加（武器による攻撃のみ有効）。〈回避〉を行わない敵には、そのラウンドにすでに〈回避〉を消費した敵も含まれる。" },
+            18: { title: "｜ HOXVIII ｜ 月", desc: "［1d10］ターンの間、自身の武器に、「MP吸収効果レベル1」を付与する。\n重ね掛けするごとにレベルがひとつずつ上昇し、レベル上限は［3］。\n重ね掛け効果は最初に振った［1d10］ターンと同じタイミングで失効する。\n吸収したMPは、仲間への受け渡しが可能。\n\n✦ MP吸収効果\n\nレベル1：敵に攻撃を当てた際に、ダメージロール分のPOWをMPとして吸収。\nレベル2：敵に攻撃を当てた際に、ダメージロール分＋［1d6］のPOWをMPとして吸収。\nレベル3：敵に攻撃を当てた際に、ダメージロール分＋［1d10］のPOWをMPとして吸収。" },
+            19: { title: "｜ HOXIX ｜ 太陽", desc: "任意の味方［1d20］名を選択し、選ばれた味方全員のHPを［1d8］回復する。同じ対象を複数回選ぶことはできない。【太陽】本人は対象に含めてよい。\n人数選択のダイス目が［9］以下だった場合、【太陽】は〈医学〉を追加でロールする。成功した場合、対象全員に［3］ターンの間、［1d3］の継続回復効果を追加付与。継続回復効果は重複せず、効果中に同効果が発動しても効果ターンの延長はない。\n\n継続回復の値はターンごとに自分の手番でロールし、継続回復を付与したターンに追加回復は発生しない。\n\n自陣内に欠損ロールを駆使してもなおHPが［1］以上にならなかった者が居た場合は、アルカナを振りMPを［1d3］減少させ、成功した場合 [1d8] の回復を対象に付与する。" },
+            20: { title: "｜ HOXX ｜ 審判", desc: "味方が［一時的発狂］、［不定の狂気］、［永久の狂気］を発症しているとき、その時点で発狂している味方全員の発狂効果を無効化する。これによるSAN値の回復は発生しない。\n自身が発狂していた場合、自身の手番の行動が〈原初のアルカナ〉に固定される。この〈原初のアルカナ〉は－20でロールし、成功すると効果が発動。味方の発狂を解除すると同時に、自身の発狂も解除する。" },
+            21: { title: "｜ HOXXI ｜ 世界", desc: "成功時、〈目星〉を追加ロール。\n成功で［1d6］体、失敗で［1d3］体の敵のすべてのステータスを看破する。\nいずれも対象は任意で選択可能。" }
+        };
+
+        const tooltip = document.getElementById('ho-tooltip');
+        const tooltipTitle = document.getElementById('tooltip-title');
+        const tooltipDesc = document.getElementById('tooltip-desc');
+
+        document.querySelectorAll('.member-item').forEach(item => {
+            item.addEventListener('mouseenter', (e) => {
+                const hoId = item.getAttribute('data-ho-id');
+                if(hoData[hoId]) {
+                    // テキストセット
+                    tooltipTitle.textContent = hoData[hoId].title;
+                    tooltipDesc.textContent = hoData[hoId].desc;
+                    
+                    // 位置計算
+                    const rect = item.getBoundingClientRect();
+                    // カードのやや右寄りに表示させる
+                    let left = rect.right - 20; 
+                    let top = rect.top + window.scrollY + 20; // 画面スクロール分を加味
+                    
+                    // ツールチップが画面右端をはみ出る場合の補正（左側に表示）
+                    if (left + 600 > window.innerWidth) {
+                        left = rect.left - 600 + 20;
+                    }
+                    
+                    tooltip.style.left = `${left}px`;
+                    tooltip.style.top = `${top}px`;
+                    tooltip.classList.add('show');
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>
