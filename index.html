@@ -174,6 +174,20 @@
         }
 
         /* ----------------------------------------------------
+           SCROLL ANIMATION STYLES
+        ---------------------------------------------------- */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .scroll-fade.is-shown {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ----------------------------------------------------
            INTRODUCTION (世界観・詳細)
         ---------------------------------------------------- */
         .intro-container {
@@ -611,8 +625,8 @@
     </div>
 
     <section id="intro">
-        <h2 class="section-title">INTRODUCTION <span>世界観・概要</span></h2>
-        <div class="intro-container">
+        <h2 class="section-title scroll-fade">INTRODUCTION <span>世界観・概要</span></h2>
+        <div class="intro-container scroll-fade">
             <div class="story-box">
                 <p>19世紀末、海底都市ルルイエの浮上により、世界は一度滅びを迎えた。</p>
                 <p>あれから100年。</p>
@@ -631,7 +645,7 @@
             </div>
         </div>
 
-        <div class="intro-details-container">
+        <div class="intro-details-container scroll-fade">
             <div class="detail-box">
                 <h3>WORLD 城塞国家ロンドンについて</h3>
                 <p>19世紀末に世界が崩壊し、現在は20世紀末である。世界崩壊後、上層部が【対神話殲滅機関アルカナ】を設立。機関の設立からは約100年。探索者たちは世界崩壊の際に生き残った1%の人類の子孫であり、世界の崩壊を経験しているわけではない。</p>
@@ -648,8 +662,8 @@
     </section>
 
     <section id="roles">
-        <h2 class="section-title">TACTICAL ROLES <span>役割概要</span></h2>
-        <div class="roles-grid">
+        <h2 class="section-title scroll-fade">TACTICAL ROLES <span>役割概要</span></h2>
+        <div class="roles-grid scroll-fade">
             <div class="role-card">
                 <div class="role-header">
                     <span class="role-name-ja">火力</span>
@@ -687,9 +701,9 @@
     </section>
 
     <section id="members">
-        <h2 class="section-title">HANDOUTS & PLAYERS <span>構成員一覧</span></h2>
+        <h2 class="section-title scroll-fade">HANDOUTS & PLAYERS <span>構成員一覧</span></h2>
         
-        <div class="slider-container">
+        <div class="slider-container scroll-fade">
             <button class="slider-btn prev" onclick="slideMember('prev')">&lt;</button>
             <div class="slider-track" id="memberTrack">
                 <div class="member-item" data-ho-id="0"><div class="member-ho">HO 0</div><div class="member-name">愚者</div><div class="member-divider"></div><div class="member-pl">本舗</div></div>
@@ -720,9 +734,9 @@
     </section>
 
     <section id="characters">
-        <h2 class="section-title">CHARACTERS <span>キャラクター詳細</span></h2>
+        <h2 class="section-title scroll-fade">CHARACTERS <span>キャラクター詳細</span></h2>
         
-        <div class="char-interface">
+        <div class="char-interface scroll-fade">
             <div class="char-selector-list">
                 <button class="char-btn" onclick="switchChar('ho0')"><span class="btn-ho">HO 00 ─ THE FOOL</span>???</button>
                 <button class="char-btn active" onclick="switchChar('ho1')"><span class="btn-ho">HO I ─ THE MAGICIAN</span>ザカライア メルディス</button>
@@ -732,7 +746,7 @@
                 <button class="char-btn" onclick="switchChar('ho5')"><span class="btn-ho">HO V ─ THE HIEROPHANT</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho6')"><span class="btn-ho">HO VI ─ THE LOVERS</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho7')"><span class="btn-ho">HO VII ─ THE CHARIOT</span>???</button>
-                <button class="char-btn" onclick="switchChar('ho8')"><span class="btn-ho">HO VIII ─ JUSTICE</span>???</button>
+                <button class="char-btn" onclick="forceScrollFade()"><span class="btn-ho">HO VIII ─ JUSTICE</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho9')"><span class="btn-ho">HO IX ─ THE HERMIT</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho10')"><span class="btn-ho">HO X ─ WHEEL OF FORTUNE</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho11')"><span class="btn-ho">HO XI ─ STRENGTH</span>???</button>
@@ -874,7 +888,7 @@
             8: { title: "｜ HOVIII ｜ 正義", desc: "3ターンの間、全員の与ダメージ、回復効果に＋［1］の固定補正を与える。\n重ね掛け不可。\n\n自陣内に欠損ロールを駆使してもなおHPが［1］以上にならなかった者が居た場合は、アルカナを振りMPを［1d3］減少させ、成功した場合 [1] の回復を対象に付与する。" },
             9: { title: "｜ HOIX ｜ 隠者", desc: "［1d2］をロールし、自身と出目の人数の任意の味方(最高3名)に\n〝隠密〟状態を付与する。\n効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。\n\n✦ 隠密\n\n〝隠密〟状態にある者は、効果時間中、すべてのダメージダイスの対象外となる。" },
             10: { title: "｜ HOX ｜ 運命の輪", desc: "必ず戦闘ラウンドの最初に使用を宣言し、ラウンド終了時に〈原初のアルカナ〉をロールする。\n［1d20］を振り、出目と同じ数の自身以外の味方の本ラウンドに自身の手番で行ったロールを、【運命の輪】の特殊ラウンド（以下【運命の輪】ラウンド）で改めてDEX順に振り直しをさせる。\n振り直しをする対象はPLが選ぶ（重複不可）。\n\n本ラウンドの結果➡【運命の輪】ラウンドの結果\n成功➡失敗　：対象（振り直しを行った探索者）はSAN値を即座に－［1d3］する。一部〈原初のアルカナ〉は効果を消失する。\n成功➡成功　：振り直したダイスに応じた追加効果を得る。\n失敗➡成功　：本ラウンドでダイスが成功していた場合に得るはずだった効果を得る。\n失敗➡失敗　：対象（振り直しを行った探索者）はSAN値およびMPを即座に－［1d3］する。\n\n※各HOのアルカナの【運命の輪】追加効果一覧はKPから案内がある。" },
-            11: { title: "｜ HOXI ｜ 力", desc: "自身に以下の効果を付与する。\n効果は［5］ターン継続し、重ね掛けも可能。ただし継続ターンは最初の発動時点の［5］ターンに固定される。\nこの効果は遠距離・魔法武器など、本来ダメージボーナスのない武器にも適用される。\n\n①ダメージボーナスを［1d6］追加。\n②〈原初のアルカナ〉ロールの出目が50以下だった場合、継続ターン中の与ダメージに装甲貫通効果を追加。" },
+            11: { title: "｜ HOXI ｜ 力", desc: "自身に以下の効果を付与する。\n効果は［5］ターン継続し、重ね掛けも可能。ただし継続ターンは最初の発動時点の［5］ターンに固定される。\nこの効果は遠距離・魔法武器など、本来ダメージボーなスのない武器にも適用される。\n\n①ダメージボーナスを［1d6］追加。\n②〈原初のアルカナ〉ロールの出目が50以下だった場合、継続ターン中の与ダメージに装甲貫通効果を追加。" },
             12: { title: "｜ HOXII ｜ 吊るされた男", desc: "敵［1］体を〝吊るし〟状態にする。\nこの状態は、使用者が毎ターン〈原初のアルカナ〉を再発動して更新することでのみ維持される。\n\n✦ 吊るし\n\n使用者と吊るされた者は、解除されるまで受けるダメージを等分する。\nまた、〝吊るし〟状態の間は互いに攻撃・回避のいずれも行うことができない。\n回復を受けることは可能だが、回復の値も折半される。\n等分されたダメージのうち割り切れない場合は敵が多く受けるほか、この回復の折半処理には【女教皇】の〝再生反転〟の効果も適用される。" },
             13: { title: "｜ HOXIII ｜ 死神", desc: "［5d100（または5b100）］を振り、［5］以下の出目ひとつにつき、現在耐久値が［50］以下の敵を［1］体即死させる。\n［96］以上の出目が出た場合は、任意の敵［1］体から［1d3］のPOWを吸収、同じ値の自身のMPを回復する。\n\nこの［5d100（または5b100）］には、【教皇】の〝救済〟によるマイナスが可能。" },
             14: { title: "｜ HOXIV ｜ 節制", desc: "ラウンドの行動回数に関係なく、任意のタイミングで使用可能。\n味方が即死級のダメージを受けた際に、その本人が【節制】を含む［1d5］名(本人+【節制】+4名=最大6等分)の味方とでダメージを等分することができる。\n被ダメージを等分する味方には必ず【節制】が含まれ、それ以外の味方については任意で指定可能。\n等分指定は〝塔の壁〟に対しても行うことができる。\n【運命の輪】ラウンドまで含め、［1］ラウンドにつき［1］タイミングのみ発動可能。" },
@@ -917,10 +931,32 @@
             });
             
             item.addEventListener('mouseleave', () => {
-                tooltip.classList.remove('show');)
-                item.addEventListener('mouseleave', () => {
                 tooltip.classList.remove('show');
             });
+        });
+
+        // ==========================================
+        // スクロールフェードイン（交差監視）処理
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.scroll-fade');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -8% 0px', // 画面の下部から少し入ったところで発火
+                threshold: 0.05
+            };
+
+            const fadeObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-shown');
+                        fadeObserver.unobserve(entry.target); // 一度表示されたら監視を解除して負荷軽減
+                    }
+                });
+            }, observerOptions);
+
+            fadeElements.forEach(el => fadeObserver.observe(el));
         });
     </script>
 
