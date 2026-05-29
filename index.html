@@ -921,5 +921,53 @@
             });
         });
     </script>
+    <div id="bgm-control" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000; background: rgba(10, 10, 12, 0.9); border: 1px solid rgba(233, 30, 99, 0.5); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #e91e63; font-size: 1.2rem; box-shadow: 0 0 10px rgba(233, 30, 99, 0.3); transition: all 0.3s ease; user-select: none;">
+        ▶
+    </div>
+    <audio id="bgm-audio" src="星々の歌.mp3" loop></audio>
+
+    <script>
+        const bgmControl = document.getElementById('bgm-control');
+        const bgmAudio = document.getElementById('bgm-audio');
+        let isBgmPlaying = false;
+
+        // クリックで再生・一時停止を切り替え
+        bgmControl.addEventListener('click', () => {
+            if (isBgmPlaying) {
+                bgmAudio.pause();
+                bgmControl.innerHTML = '▶';
+                bgmControl.style.boxShadow = '0 0 10px rgba(233, 30, 99, 0.3)';
+                bgmControl.style.borderColor = 'rgba(233, 30, 99, 0.5)';
+            } else {
+                bgmAudio.play();
+                bgmControl.innerHTML = '⏸';
+                // 再生中はサイトのテーマカラーに合わせて発光させる
+                bgmControl.style.boxShadow = '0 0 20px rgba(233, 30, 99, 0.8)';
+                bgmControl.style.borderColor = '#e91e63';
+            }
+            isBgmPlaying = !isBgmPlaying;
+        });
+
+        // ホバー時のエフェクト（既存のボタンの挙動に寄せています）
+        bgmControl.addEventListener('mouseenter', () => {
+            if(!isBgmPlaying) bgmControl.style.background = 'rgba(233, 30, 99, 0.1)';
+        });
+        bgmControl.addEventListener('mouseleave', () => {
+            bgmControl.style.background = 'rgba(10, 10, 12, 0.9)';
+        });
+    </script>
+    ```
+
+### 追加する位置の目安
+
+```html
+    item.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('show');
+            });
+        });
+    </script>
+
+    </body>
+</html>
 </body>
 </html>
