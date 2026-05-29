@@ -738,32 +738,48 @@
         
         <div class="char-interface scroll-fade">
             <div class="char-selector-list">
-                <button class="char-btn" onclick="switchChar('ho0')"><span class="btn-ho">HO 00 ─ THE FOOL</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho0')"><span class="btn-ho">HO 00 ─ THE FOOL</span>Setsu</button>
                 <button class="char-btn active" onclick="switchChar('ho1')"><span class="btn-ho">HO I ─ THE MAGICIAN</span>ザカライア メルディス</button>
                 <button class="char-btn" onclick="switchChar('ho2')"><span class="btn-ho">HO II ─ THE HIGH PRIESTESS</span>ヒルデガルド ヴァレンタイン</button>
-                <button class="char-btn" onclick="switchChar('ho3')"><span class="btn-ho">HO III ─ THE EMPRESS</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho3')"><span class="btn-ho">HO III ─ THE EMPRESS</span>Serenade Lilywhite</button>
                 <button class="char-btn" onclick="switchChar('ho4')"><span class="btn-ho">HO IV ─ THE EMPEROR</span>???</button>
-                <button class="char-btn" onclick="switchChar('ho5')"><span class="btn-ho">HO V ─ THE HIEROPHANT</span>???</button>
-                <button class="char-btn" onclick="switchChar('ho6')"><span class="btn-ho">HO VI ─ THE LOVERS</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho5')"><span class="btn-ho">HO V ─ THE HIEROPHANT</span>（名前未定）</button>
+                <button class="char-btn" onclick="switchChar('ho6')"><span class="btn-ho">HO VI ─ THE LOVERS</span>Rabbi Ravi</button>
                 <button class="char-btn" onclick="switchChar('ho7')"><span class="btn-ho">HO VII ─ THE CHARIOT</span>???</button>
-                <button class="char-btn" onclick="forceScrollFade()"><span class="btn-ho">HO VIII ─ JUSTICE</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho8')"><span class="btn-ho">HO VIII ─ JUSTICE</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho9')"><span class="btn-ho">HO IX ─ THE HERMIT</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho10')"><span class="btn-ho">HO X ─ WHEEL OF FORTUNE</span>???</button>
-                <button class="char-btn" onclick="switchChar('ho11')"><span class="btn-ho">HO XI ─ STRENGTH</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho11')"><span class="btn-ho">HO XI ─ STRENGTH</span>Glunyta Piquello</button>
                 <button class="char-btn" onclick="switchChar('ho12')"><span class="btn-ho">HO XII ─ THE HANGED MAN</span>???</button>
-                <button class="char-btn" onclick="switchChar('ho13')"><span class="btn-ho">HO XIII ─ DEATH</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho13')"><span class="btn-ho">HO XIII ─ DEATH</span>Grave Masquerade</button>
                 <button class="char-btn" onclick="switchChar('ho14')"><span class="btn-ho">HO XIV ─ TEMPERANCE</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho15')"><span class="btn-ho">HO XV ─ THE DEVIL</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho16')"><span class="btn-ho">HO XVI ─ THE TOWER</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho17')"><span class="btn-ho">HO XVII ─ THE STAR</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho18')"><span class="btn-ho">HO XVIII ─ THE MOON</span>???</button>
                 <button class="char-btn" onclick="switchChar('ho19')"><span class="btn-ho">HO XIX ─ THE SUN</span>???</button>
-                <button class="char-btn" onclick="switchChar('ho20')"><span class="btn-ho">HO XX ─ JUDGEMENT</span>???</button>
+                <button class="char-btn" onclick="switchChar('ho20')"><span class="btn-ho">HO XX ─ JUDGEMENT</span>（名前未定）</button>
                 <button class="char-btn" onclick="switchChar('ho21')"><span class="btn-ho">HO XXI ─ THE WORLD</span>???</button>
             </div>
 
             <div class="char-display-area">
                 
+                <div class="char-content" id="char-ho0">
+                    <div class="char-img-box">
+                        <img src="image0.png" alt="Setsu">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO 00 ─ THE FOOL / <br>火力・ギャンブル</div>
+                        <h3 class="char-main-name">Setsu</h3>
+                        <div class="char-sub-name">セツ (PL: 本舗)</div>
+                        <div class="char-profile-text">
+                            不確定性と無限の可能性を司る「愚者」のアルカナ。どこか気怠げな眼差しと、白黒の髪に覆われたフード姿が印象的な人物。<br><br>
+                            周囲の期待や戦況に流されることなく、独自の歩みで運命を攪乱する。その掴みどころのない物憂げな態度の裏には、誰も予測できない危うさと純粋な選択を秘めている。
+                        </div>
+                        <div class="char-word">「……ん、ぼくに何か用？」</div>
+                    </div>
+                </div>
+
                 <div class="char-content active" id="char-ho1">
                     <div class="char-img-box">
                         <img src="image1.png" alt="Zachariah Meredith">
@@ -793,6 +809,102 @@
                             魔術師と同じくデバフサポートに位置し、観察力と深い洞察で戦況の裏をかく。
                         </div>
                         <div class="char-word">「奪われるなら、与えないまで。」</div>
+                    </div>
+                </div>
+
+                <div class="char-content" id="char-ho3">
+                    <div class="char-img-box">
+                        <img src="image3.png" alt="Serenade Lilywhite">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO III ─ THE EMPRESS / <br>バフサポート</div>
+                        <h3 class="char-main-name">Serenade Lilywhite</h3>
+                        <div class="char-sub-name">セレナーデ・リリーホワイト (PL: みすみ)</div>
+                        <div class="char-profile-text">
+                            豊穣と慈愛を司る「女帝」のアルカナ。百合の花を戴く美しいヴェールを纏い、優美な微笑みを浮かべる麗人。<br><br>
+                            すべてを包み込むような圧倒的な包容力で仲間を支える、慈悲深き守護者としての役割を担う。しかし、その至高の気品と微笑みの奥には、決して揺るぐことのない冷徹なまでの母性と絶対的な意志が佇んでいる。
+                        </div>
+                        <div class="char-word">「大丈夫ですよ、すべて私に委ねてくださいな♪」</div>
+                    </div>
+                </div>
+
+                <div class="char-content" id="char-ho5">
+                    <div class="char-img-box">
+                        <img src="image5.png" alt="（名前未定）">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO V ─ THE HIEROPHANT / <br>特殊</div>
+                        <h3 class="char-main-name">（名前未定）</h3>
+                        <div class="char-sub-name">（PL: とおの）</div>
+                        <div class="char-profile-text">
+                            精神の救済と秩序を司る「教皇」のアルカナ。爽やかな水色の髪と、無垢なひまわりのような瞳を持つ少年（少女）。<br><br>
+                            迷える魂を導き、傷ついた者を癒やす精神的支柱としての役割を果たす。その人懐っこく愛らしい笑みの裏には、「救済」という名の甘美で絶対的な絶対規律を内包している。
+                        </div>
+                        <div class="char-word">「ぼくに救ってほしい人ーーっ？救済だよ」</div>
+                    </div>
+                </div>
+
+                <div class="char-content" id="char-ho6">
+                    <div class="char-img-box">
+                        <img src="image6.png" alt="Rabbi Ravi">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO VI ─ THE LOVERS / <br>特殊</div>
+                        <h3 class="char-main-name">Rabbi Ravi</h3>
+                        <div class="char-sub-name">ラビ・ラヴィ (PL: 本舗)</div>
+                        <div class="char-profile-text">
+                            選択と情熱を司る「恋人」のアルカナ。愛嬌たっぷりのうさ耳カチューシャと、爛漫な笑顔で人々を魅了する青年。<br><br>
+                            場を華やかに彩り、絆を繋ぐムードメーカーとしての役割を担う。ファンを公言し奔放に振る舞うエンターテイナーな姿の裏には、時に感情を昂らせる熱いパッションと、計算高き「もう一つの素顔」が隠されている。
+                        </div>
+                        <div class="char-word">「はーい皆のアイドル！……って、素の俺は秘密な？」</div>
+                    </div>
+                </div>
+
+                <div class="char-content" id="char-ho11">
+                    <div class="char-img-box">
+                        <img src="image11.png" alt="Glunyta Piquello">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO XI ─ STRENGTH / <br>火力</div>
+                        <h3 class="char-main-name">Glunyta Piquello</h3>
+                        <div class="char-sub-name">グラニータ・ピケロ (PL: みすみ)</div>
+                        <div class="char-profile-text">
+                            不屈の精神と理性を司る「力」のアルカナ。鮮やかな赤髪のツインテールと、頭上の猛々しい角が目を引く少女。<br><br>
+                            強靭な意志と圧倒的な突破力で前線を切り開く、頼れる前衛としての役割を果たす。その凛とした佇まいと鋭い眼差しの裏には、激しい感情を統制する高い理性と、仲間を護り抜くための熱き誇りを宿している。
+                        </div>
+                        <div class="char-word">「私に任せろ。この力、戦場を引き裂くためにある」</div>
+                    </div>
+                </div>
+
+                <div class="char-content" id="char-ho13">
+                    <div class="char-img-box">
+                        <img src="image13.png" alt="Grave Masquerade">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO XIII ─ DEATH / <br>火力・回復・ギャンブル</div>
+                        <h3 class="char-main-name">Grave Masquerade</h3>
+                        <div class="char-sub-name">グレイヴ･マスカレイド (PL: うきこ)</div>
+                        <div class="char-profile-text">
+                            終焉と変革を司る「死神」のアルカナ。顔中を覆う包帯の隙間から、狂気的な爛々とした眼光を覗かせる不気味な人物。<br><br>
+                            敵に絶望を植え付け、戦場を破壊と混沌に陥れる絶対的な恐怖としての役割を担う。普段の陰鬱な冷徹さとは裏腹に、戦闘が始まれば容赦なく本性を剥き出しにするその姿は、味方すらも戦慄させる。
+                        </div>
+                        <div class="char-word">「ヒヒッ、壊しちゃおっかぁ？ アンタの全部さァ！」</div>
+                    </div>
+                </div>
+
+                <div class="char-content" id="char-ho20">
+                    <div class="char-img-box">
+                        <img src="image20.png" alt="（名前未定）">
+                    </div>
+                    <div class="char-detail-info">
+                        <div class="char-arcana-title">HO XX ─ JUDGEMENT / <br>回復</div>
+                        <h3 class="char-main-name">（名前未定）</h3>
+                        <div class="char-sub-name">（PL: とおの）</div>
+                        <div class="char-profile-text">
+                            復活と裁きを司る「審判」のアルカナ。妖艶に輝く紅い瞳と、胸元で静かに手を合わせる姿が神秘的な人物。<br><br>
+                            善悪を見極め、戦況の因果を清算する冷徹なジャッジメントとしての役割を果たす。穏やかにすら見える蠱惑的な笑みの裏には、一切の情情を挟まずに罪を断罪する、非情なまでの絶対的ルールが潜んでいる。
+                        </div>
+                        <div class="char-word">「ふふ……有罪（ギルティ）。」</div>
                     </div>
                 </div>
 
@@ -895,7 +1007,7 @@
             15: { title: "｜ HOXV ｜ 悪魔", desc: "［1d10］をロールし、出目と同じだけの敵をランダムに選択する。\n対象に［1d4］の装甲貫通ダメージを、［1d5］ターンの間継続付与。\n継続ダメージの値は毎ターンごとに自分の手番でロールし、継続ダメージを付与したターンにダメージは発生しない。\n\n連続発動について：\n【悪魔】の〈原初のアルカナ〉は複数のターンで連続して発動が可能だが、ターンごとにその時点での敵の残存勢力すべてを対象としてランダム選出を行う。\n〇敵の数が［1d10］の出目より少ない場合、残っている敵全員が対象となる。\n〇すでに対象となっている敵が選ばれた場合、重ね掛けは不可。この場合再抽選は行われず、重複分の対象追加は行われない。" },
             16: { title: "｜ HOXVI ｜ 塔", desc: "自身と任意の味方［2］名(最大3名)に〝塔の壁〟を建築する。\n効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。\n\n✦ 塔の壁\n\n耐久値［20］の壁。\n装甲貫通を無効化し、超過ダメージを相殺する。\nただし、以下のいずれかの条件を満たした場合、壁は崩壊する。\n\n- 装甲貫通無効化効果の累計が［10］以上となった場合\n- 超過ダメージの相殺が発生した場合\n\n※壁の耐久値は探索者間で連動しない。" },
             17: { title: "｜ HOXVII ｜ 星", desc: "自身と任意の味方［1d3＋1］名に特殊効果〝煌々〟を付与する。\n効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。\n\n✦ 煌々\n\n付与対象は［1］ラウンドで［2］回まで〈回避〉が行えるようになる。また、攻撃する対象の〈回避〉を無効化する。\n対象の〈回避〉を無効化した際、その攻撃を行った付与対象は自身のSAN値を［1］減少させる。\nまた、〈回避〉を行わない敵に攻撃を行った場合のダメージ値が［1d3］増加（武器による攻撃のみ有効）。〈回避〉を行わない敵には、そのラウンドにすでに〈回避〉を消費した敵も含まれる。" },
-            18: { title: "｜ HOXVIII ｜ 月", desc: "［1d10］ターンの間、自身の武器に、「MP吸収効果レベル1」を付与する。\n重ね掛けするごとにレベルがひとつずつ上昇し、レベル上限は［3］。\n重ね掛け効果は最初に振った［1d10］ターンと同じタイミングで失効する。\n吸収したMPは、仲間への受け渡しが可能。\n\n✦ MP吸収効果\n\nレベル1：敵に攻撃を当てた際に、ダメージロール分のPOWをMPとして吸収。\nレベル2：敵に攻撃を当てた際に、ダメージロール分＋［1d6］のPOWをMPとして吸収。\nレベル3：敵に攻撃を当てた際に、ダメージロール分＋［1d10］のPOWをMPとして吸収。" },
+            18: { title: "｜ HOXVIII ｜ 月", desc: "［1d10］ターンの間、自身の武器に、「MP吸収効果レベル1」を付いたす。\n重ね掛けするごとにレベルがひとつずつ上昇し、レベル上限は［3］。\n重ね掛け効果は最初に振った［1d10］ターンと同じタイミングで失効する。\n吸収したMPは、仲間への受け渡しが可能。\n\n✦ MP吸収効果\n\nレベル1：敵に攻撃を当てた際に、ダメージロール分のPOWをMPとして吸収。\nレベル2：敵に攻撃を当てた際に、ダメージロール分＋［1d6］のPOWをMPとして吸収。\nレベル3：敵に攻撃を当てた際に、ダメージロール分＋［1d10］のPOWをMPとして吸収。" },
             19: { title: "｜ HOXIX ｜ 太陽", desc: "任意の味方［1d20］名を選択し、選ばれた味方全員のHPを［1d8］回復する。同じ対象を複数回選ぶことはできない。【太陽】本人は対象に含めてよい。\n人数選択のダイス目が［9］以下だった場合、【太陽】は〈医学〉を追加でロールする。成功した場合、対象全員に［3］ターンの間、［1d3］の継続回復効果を追加付与。継続回復効果は重複せず、効果中に同効果が発動しても効果ターンの延長はない。\n\n継続回復の値はターンごとに自分の手番でロールし、継続回復を付与したターンに追加回復は発生しない。\n\n自陣内に欠損ロールを駆使してもなおHPが［1］以上にならなかった者が居た場合は、アルカナを振りMPを［1d3］減少させ、成功した場合 [1d8] の回復を対象に付与する。" },
             20: { title: "｜ HOXX ｜ 審判", desc: "味方が［一時的発狂］、［不定の狂気］、［永久の狂気］を発症しているとき、その時点で発狂している味方全員の発狂効果を無効化する。これによるSAN値の回復は発生しない。\n自身が発狂していた場合、自身の手番の行動が〈原初のアルカナ〉に固定される。この〈原初のアルカナ〉は－20でロールし、成功すると効果が発動。味方の発狂を解除すると同時に、自身の発狂も解除する。" },
             21: { title: "｜ HOXXI ｜ 世界", desc: "成功時、〈目星〉を追加ロール。\n成功で［1d6］体、失敗で［1d3］体の敵のすべてのステータスを看破する。\nいずれも対象は任意で選択可能。" }
